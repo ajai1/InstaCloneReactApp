@@ -14,6 +14,7 @@ import "../../App.css";
 
 function HeaderComponent({
   authUser,
+  setAuthUser,
   openModal,
   isOpenModal,
   signUpUser,
