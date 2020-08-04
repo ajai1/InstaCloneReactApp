@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is mainly based on **`React`**, using **`redux`** as the state manager and **`firebase`** to give the backend support.
+## The project is available live in the given link below
+### https://insta-clone-2e34c.web.app
+
+
+
+Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
