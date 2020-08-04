@@ -1,25 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+//firebase
+import { db } from "./config/firebase";
+//own components
+
+import Post from "./Components/Post/Post";
+import HeaderComponent from "./Components/HeaderComponent/HeaderComponent";
+
+//css
+import "./App.css";
+//redux
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
+  const [posts, setPost] = useState([]);
+
+  useEffect(() => {
+    db.collection("posts").onSnapshot((snapshot) => {
+      setPost(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          post: doc.data(),
+        }))
+      );
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="app">
+        <HeaderComponent></HeaderComponent>
+        <h1>Hello</h1>
+        {posts.map(({ id, post }) => (
+          <Post
+            key={id}
+            userName={post.userName}
+            imageUrl={post.imageUrl}
+            caption={post.caption}
+          />
+        ))}
+      </div>
+    </Provider>
   );
 }
 
