@@ -10,6 +10,7 @@
   background-color: white;
   position: sticky;
   z-index: 1;
+  width: 100%;
   top: 0;
   padding: 10px;
   display: flex;
@@ -20,6 +21,7 @@
 
 .app__headerImage {
   width: 90px;
+  margin-left: 10px;
   object-fit: contain;
 }
 
@@ -30,5 +32,12 @@
 }
 
 .app__postsright {
+  margin-left: 20px;
+}
+
+.app__postEmbed {
+}
+
+.app__postsleft {
   margin-left: 20px;
 }

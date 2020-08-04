@@ -17,6 +17,7 @@ import { auth } from "firebase";
 function App() {
   const [posts, setPost] = useState([]);
   const [user, setUser] = useState(null);
+  const [viewWidth, setViewWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     db.collection("posts")
@@ -29,6 +30,16 @@ function App() {
           }))
         );
       });
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const setAuthUser = (authUser) => {
@@ -53,18 +64,14 @@ function App() {
             ))}
           </div>
           <div className="app__postsright">
-            <InstagramEmbed
-              url="https://www.instagram.com/p/CDdctFVg4K_/?utm_source=ig_embed&amp;utm_campaign=loading"
-              maxWidth={320}
-              hideCaption={false}
-              containerTagName="div"
-              protocol=""
-              injectScript
-              onLoading={() => {}}
-              onSuccess={() => {}}
-              onAfterRender={() => {}}
-              onFailure={() => {}}
-            />
+            {viewWidth < 500 ? null : (
+              <InstagramEmbed
+                className="app__postEmbed"
+                containerTagName="div"
+                maxWidth={320}
+                url="https://www.instagram.com/p/CDdctFVg4K_/?utm_source=ig_embed&amp;utm_campaign=loading"
+              />
+            )}
           </div>
         </div>
 

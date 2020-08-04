@@ -34,7 +34,7 @@ function LoginButtons({ authUser, openModal, openLoginModal, signUpUser }) {
       {authUser ? (
         <Button onClick={() => auth.signOut()}>Log out</Button>
       ) : (
-        <div>
+        <div style={{ marginRight: "15px" }}>
           <Button onClick={() => openLoginModal(true)}>Sign In</Button>
           <Button onClick={(e) => openModal(true)}>Sign Up</Button>
         </div>
