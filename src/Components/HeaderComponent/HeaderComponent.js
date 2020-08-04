@@ -37,7 +37,7 @@ function HeaderComponent({
           alt=""
           className="app__headerImage"
         />
-        <LoginButtons className="app__loginbutton"></LoginButtons>
+        <LoginButtons></LoginButtons>
       </div>
     </Fragment>
   );

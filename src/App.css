@@ -8,9 +8,11 @@
 
 .app__header {
   background-color: white;
+  position: sticky;
+  z-index: 1;
+  top: 0;
   padding: 10px;
   display: flex;
-  align-items: center;
   border-bottom: 1px solid lightgray;
   object-fit: contain;
   justify-content: space-between;
@@ -18,8 +20,15 @@
 
 .app__headerImage {
   width: 90px;
+  object-fit: contain;
 }
 
-.app__loginbutton {
-  flex: 1;
+.app__posts {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.app__postsright {
+  margin-left: 20px;
 }

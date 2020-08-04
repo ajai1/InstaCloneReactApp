@@ -31,13 +31,13 @@ function LoginButtons({ authUser, openModal, openLoginModal, signUpUser }) {
 
   return (
     <Fragment>
-      {!authUser ? (
-        <Button onClick={() => openLoginModal(true)}>Log In</Button>
-      ) : null}
       {authUser ? (
         <Button onClick={() => auth.signOut()}>Log out</Button>
       ) : (
-        <Button onClick={(e) => openModal(true)}>Sign Up</Button>
+        <div>
+          <Button onClick={() => openLoginModal(true)}>Sign In</Button>
+          <Button onClick={(e) => openModal(true)}>Sign Up</Button>
+        </div>
       )}
     </Fragment>
   );

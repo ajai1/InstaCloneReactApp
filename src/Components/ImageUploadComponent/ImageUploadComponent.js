@@ -58,9 +58,13 @@ function ImageUploadComponent({ authUser }) {
   return (
     <div>
       {authUser?.displayName ? (
-        <div>
+        <div className="imageupload">
           <h1>Upload</h1>
-          <progress value={progress} max="100" />
+          <progress
+            className="imageupload__progress"
+            value={progress}
+            max="100"
+          />
           <input
             type="text"
             placeholder="Enter a caption..."

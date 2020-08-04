@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 //firebase
 import { db } from "./config/firebase";
+import InstagramEmbed from "react-instagram-embed";
 //own components
 
 import Post from "./Components/Post/Post";
@@ -39,18 +40,35 @@ function App() {
     <Provider store={store}>
       <div className="app">
         <HeaderComponent setAuthUser={setAuthUser}></HeaderComponent>
-        <h1>Hello</h1>
+        <div className="app__posts">
+          <div className="app__postsleft">
+            {posts.map(({ id, post }) => (
+              <Post
+                key={id}
+                postId={id}
+                userName={post.userName}
+                imageUrl={post.imageUrl}
+                caption={post.caption}
+              />
+            ))}
+          </div>
+          <div className="app__postsright">
+            <InstagramEmbed
+              url="https://www.instagram.com/p/CDdctFVg4K_/?utm_source=ig_embed&amp;utm_campaign=loading"
+              maxWidth={320}
+              hideCaption={false}
+              containerTagName="div"
+              protocol=""
+              injectScript
+              onLoading={() => {}}
+              onSuccess={() => {}}
+              onAfterRender={() => {}}
+              onFailure={() => {}}
+            />
+          </div>
+        </div>
 
         <ImageUploadComponent></ImageUploadComponent>
-
-        {posts.map(({ id, post }) => (
-          <Post
-            key={id}
-            userName={post.userName}
-            imageUrl={post.imageUrl}
-            caption={post.caption}
-          />
-        ))}
       </div>
     </Provider>
   );
